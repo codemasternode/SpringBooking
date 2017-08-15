@@ -1,6 +1,7 @@
 package com.zadanie.zadanie2.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Booking {
@@ -8,22 +9,25 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String city;
-    private String until;
+    private Date dateFrom;
+    private Date dateUntil;
     private String guestName;
     private String guestEmail;
     private String guestPhone;
+
     @OneToOne(cascade = CascadeType.ALL)
     private Invoice invoice;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Room room;
 
+    @ManyToOne(cascade = CascadeType.MERGE)
+    private Room room;
 
     public Booking() {
     }
 
-    public Booking(String city, String until, String guestName, String guestEmail, String guestPhone, Invoice invoice,Room room) {
+    public Booking(String city, Date dateFrom, Date dateUntil, String guestName, String guestEmail, String guestPhone, Invoice invoice, Room room) {
         this.city = city;
-        this.until = until;
+        this.dateFrom = dateFrom;
+        this.dateUntil = dateUntil;
         this.guestName = guestName;
         this.guestEmail = guestEmail;
         this.guestPhone = guestPhone;
@@ -47,12 +51,20 @@ public class Booking {
         this.city = city;
     }
 
-    public String getUntil() {
-        return until;
+    public Date getDateFrom() {
+        return dateFrom;
     }
 
-    public void setUntil(String until) {
-        this.until = until;
+    public void setDateFrom(Date dateFrom) {
+        this.dateFrom = dateFrom;
+    }
+
+    public Date getDateUntil() {
+        return dateUntil;
+    }
+
+    public void setDateUntil(Date dateUntil) {
+        this.dateUntil = dateUntil;
     }
 
     public String getGuestName() {
@@ -79,5 +91,19 @@ public class Booking {
         this.guestPhone = guestPhone;
     }
 
+    public Invoice getInvoice() {
+        return invoice;
+    }
 
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
 }

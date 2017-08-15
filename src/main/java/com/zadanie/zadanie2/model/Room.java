@@ -16,19 +16,16 @@ public class Room {
     private String name;
     private String description;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @ManyToOne
     private RoomCategory roomCategory;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "room")
-    @JsonBackReference
-    private List<Booking> bookingList;
 
     public Room() {
     }
 
-    public Room(String name, String description) {
+    public Room(String name, String description, RoomCategory roomCategory) {
         this.name = name;
         this.description = description;
+        this.roomCategory = roomCategory;
     }
 
     public Long getId() {
@@ -55,5 +52,12 @@ public class Room {
         this.description = description;
     }
 
+    public RoomCategory getRoomCategory() {
+        return roomCategory;
+    }
+
+    public void setRoomCategory(RoomCategory roomCategory) {
+        this.roomCategory = roomCategory;
+    }
 
 }

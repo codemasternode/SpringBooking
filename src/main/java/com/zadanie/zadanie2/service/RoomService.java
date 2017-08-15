@@ -20,4 +20,15 @@ public class RoomService {
         return roomRepository.save(room);
     }
 
+    public Room findRoomById(Long id){
+        return roomRepository.findRoomById(id);
+    }
+
+    public void dropRoom(Long id){
+       roomRepository.delete(id);
+    }
+    public Room updateData(Room room){
+        return roomRepository.save(room);
+    }
+
 }

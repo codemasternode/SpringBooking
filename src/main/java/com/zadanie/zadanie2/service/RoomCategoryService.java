@@ -20,4 +20,9 @@ public class RoomCategoryService {
         return roomCategoryRepository.findAll();
     }
 
+    public void dropRoomCategory(Long id){
+        roomCategoryRepository.delete(id);
+    }
+
+
 }

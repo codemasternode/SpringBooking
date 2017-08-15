@@ -9,8 +9,7 @@ public class Invoice {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String uri;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Booking booking;
+
 
     public Invoice() {
     }

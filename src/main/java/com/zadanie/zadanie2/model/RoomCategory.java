@@ -12,22 +12,14 @@ public class RoomCategory {
     private Long id;
     private String name;
     private String description;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "roomCategory")
-    @JsonBackReference
-    private List<Room> roomList;
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Pricing pricing;
-
-
+    private Double pricing;
 
     public RoomCategory() {
     }
 
-    public RoomCategory(String name, String description,List<Room> roomList,Pricing pricing) {
+    public RoomCategory(String name, String description, Double pricing) {
         this.name = name;
         this.description = description;
-        this.roomList = roomList;
         this.pricing = pricing;
     }
 
@@ -55,5 +47,11 @@ public class RoomCategory {
         this.description = description;
     }
 
+    public Double getPricing() {
+        return pricing;
+    }
 
+    public void setPricing(Double pricing) {
+        this.pricing = pricing;
+    }
 }
