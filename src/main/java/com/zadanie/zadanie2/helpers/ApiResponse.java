@@ -7,12 +7,12 @@ public class ApiResponse {
         ERROR
     }
 
-    public static final class AppError{
+    public static final class ApiError {
 
         private final int errorCode;
         private final String description;
 
-        public AppError(int errorCode, String description) {
+        public ApiError(int errorCode, String description) {
             this.errorCode = errorCode;
             this.description = description;
         }
@@ -28,13 +28,13 @@ public class ApiResponse {
 
     private final Status status;
     private final Object data;
-    private final AppError error;
+    private final ApiError error;
 
     public ApiResponse(Status status, Object data){
         this(status, data, null);
     }
 
-    public ApiResponse(Status status, Object data, AppError error) {
+    public ApiResponse(Status status, Object data, ApiError error) {
         this.status = status;
         this.data = data;
         this.error = error;
@@ -48,7 +48,7 @@ public class ApiResponse {
         return data;
     }
 
-    public AppError getError() {
+    public ApiError getError() {
         return error;
     }
 }
